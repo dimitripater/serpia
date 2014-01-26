@@ -1,3 +1,8 @@
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -53,7 +58,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
