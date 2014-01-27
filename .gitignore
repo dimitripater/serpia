@@ -48,6 +48,7 @@ coverage.xml
 *.pot
 *.sqlite
 local_settings.py
+SECRET_FILE
 
 # Sphinx documentation
 docs/_build/
