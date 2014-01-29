@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'frontend',
     'bootstrap3',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -35,10 +36,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'myproject.urls'
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
-
-
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
