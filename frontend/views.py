@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 
 from .models import CodeExamples
 
@@ -9,12 +10,14 @@ class HomePageView(TemplateView):
     template_name = "home.html"
 
 
-class WhatWasIThinkingListView(ListView):
+class CodeExampleListView(ListView):
 
-    template_name = "whatwasithinking.html"
+    template_name = "codeexamples_list.html"
     model = CodeExamples
 
-    def get_context_data(self, **kwargs):
-        context = super(WhatWasIThinkingListView, self).get_context_data(**kwargs)
 
-        return context
+class CodeExampleDetailView(DetailView):
+
+    template_name = "codeexamples_detail.html"
+    model = CodeExamples
+
