@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for i in object_list %}
+<h2>{{ i.title }}</h2>
 <pre class="prettyprint">
 {{ i.text }}
 </pre>
