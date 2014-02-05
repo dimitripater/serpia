@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block content %}
 <h2>{{ object.title }}</h2>
 <pre class="prettyprint">
 {{ object.text }}
 </pre>
+{% thumbnail object.image "100x100" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %}
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

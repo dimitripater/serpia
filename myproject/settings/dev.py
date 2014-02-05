@@ -6,6 +6,7 @@ from .common import *
 
 
 DEBUG = True
+THUMBNAIL_DEBUG = True
 
 DATABASES = {
     'default': {
