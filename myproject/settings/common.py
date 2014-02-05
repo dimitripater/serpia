@@ -33,7 +33,7 @@ INSTALLED_APPS = (
     'frontend',
     'bootstrap3',
     'south',
-    'sorl.thumbnail',
+    # 'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
