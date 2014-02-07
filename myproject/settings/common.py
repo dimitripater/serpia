@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'south',
     'sorl.thumbnail',
-    'social_auth',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
