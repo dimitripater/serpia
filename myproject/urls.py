@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     url(r'^codeexample/(?P<slug>[\w-]+)/*$', CodeExampleDetailView.as_view(), name='codeexample'),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'', include('social_auth.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -31,9 +31,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend',
+    'account',
     'bootstrap3',
     'south',
     'sorl.thumbnail',
+    'social_auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -45,12 +47,16 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'myproject.urls'
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+AUTH_USER_MODEL = 'account.Account'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -62,11 +68,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../media/')
 MEDIA_URL = '/media/'
+
+# social auth
+SOCIAL_AUTH_USER_MODEL = 'account.Account'

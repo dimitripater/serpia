@@ -7,4 +7,4 @@ class CodeExamplesAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
-admin.site.register(CodeExamples)
+admin.site.register(CodeExamples, CodeExamplesAdmin)
