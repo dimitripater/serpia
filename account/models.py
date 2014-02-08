@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 
 class AccountUserManager(BaseUserManager):
@@ -33,6 +35,7 @@ class Account(AbstractBaseUser):
     about_me = models.TextField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    slug = models.SlugField()
 
     objects = AccountUserManager()
 
@@ -54,6 +57,15 @@ class Account(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+    def get_absolute_url(self):
+        return reverse('accounts_detail', args=[str(self.slug)])
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.username)
+
+        super(Account, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.username

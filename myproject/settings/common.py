@@ -21,8 +21,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
 )
 
 INSTALLED_APPS = (
@@ -37,7 +35,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'south',
     'sorl.thumbnail',
-    'social.apps.django_app.default',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,9 +49,12 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'social.backends.facebook.FacebookOAuth2',
-    'social.backends.facebook.FacebookAppOAuth2',
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, '../templates/'),
+)
+
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -75,6 +76,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../media/')
 MEDIA_URL = '/media/'
-
-# social auth
-SOCIAL_AUTH_USER_MODEL = 'account.Account'

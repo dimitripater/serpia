@@ -3,11 +3,11 @@ Pillow==2.3.0
 South==0.8.4
 argparse==1.2.1
 django-bootstrap3==2.5.6
+-e hg+https://bitbucket.org/LinnTroll/django-registration-1.5@c71d5b8e273551cffdfc7869545430e30f417432#egg=django_registration-dev
 httplib2==0.8
 oauth2==1.5.211
 oauthlib==0.6.1
 python-openid==2.2.5
-python-social-auth==0.1.21
 requests==2.2.1
 requests-oauthlib==0.4.0
 six==1.5.2
