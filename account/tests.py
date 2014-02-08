@@ -12,7 +12,7 @@ class UserTestCase(TestCase):
     def test_register(self):
         response = self.client.post(reverse('registration_register'),
                                     {
-                                        'username': 'foo',
+                                        # 'username': 'foo',
                                         'password1': 'bar',
                                         'password2': 'bar',
                                         'email': 'bar@example.com',

@@ -5,22 +5,22 @@ from django.template.defaultfilters import slugify
 
 
 class AccountUserManager(BaseUserManager):
-    def create_user(self, username, email, password=None):
-        if not username:
+    def create_user(self, email, password=None):
+        if not email:
             raise ValueError('Users must have an email address')
 
         user = self.model(
             email=self.normalize_email(email),
-            username=username,
+            # username=username,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, password):
+    def create_superuser(self, email, password):
         user = self.create_user(
-            username,
+            # username,
             email=email,
             password=password,
         )
@@ -31,7 +31,7 @@ class AccountUserManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
-    username = models.CharField(max_length=20, unique=True)
+    # username = models.CharField(max_length=20, unique=True)
     about_me = models.TextField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -39,14 +39,14 @@ class Account(AbstractBaseUser):
 
     objects = AccountUserManager()
 
-    USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = "email"
+    # REQUIRED_FIELDS = ['email']
 
     def get_full_name(self):
-        return self.username
+        return self.email
 
     def get_short_name(self):
-        return self.username
+        return self.email
 
     def has_perm(self, perm, obj=None):
         return True
@@ -63,9 +63,9 @@ class Account(AbstractBaseUser):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.username)
+            self.slug = slugify(self.email)
 
         super(Account, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.username
+        return self.email
