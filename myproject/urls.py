@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from frontend.views import HomePageView, CodeExampleListView, CodeExampleDetailView
-from account.views import AccountDetailView, AccountListView
+from account.views import AccountDetailView, AccountListView, AccountEdit
 
 admin.autodiscover()
 
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     url(r'^profiles/', AccountListView.as_view(), name='accounts_list'),
     url(r'^myprofile/(?P<slug>[\w-]+)/*$', AccountDetailView.as_view(), name='accounts_detail'),
+    url(r'^editmyprofile/', AccountEdit.as_view(), name='accounts_edit'),
 
     url(r'^admin/', include(admin.site.urls)),
 
