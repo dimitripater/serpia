@@ -1,1 +1,8 @@
-{{ object_list }}
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% for account in object_list %}
+        <a href="{% url 'accounts_detail' account.slug %}">{{ account }}</a><br>
+    {% endfor %}
+{% endblock %} }}

@@ -11,7 +11,6 @@ class AccountUserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
-            # username=username,
         )
 
         user.set_password(password)
@@ -20,7 +19,6 @@ class AccountUserManager(BaseUserManager):
 
     def create_superuser(self, email, password):
         user = self.create_user(
-            # username,
             email=email,
             password=password,
         )
@@ -31,7 +29,6 @@ class AccountUserManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
-    # username = models.CharField(max_length=20, unique=True)
     about_me = models.TextField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

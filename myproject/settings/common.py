@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'registration',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,3 +77,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../media/')
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_REDIRECT_URL = '/'
