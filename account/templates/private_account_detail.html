@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {{ object }}
+    <a href="{% url 'accounts_edit' %}">{% trans 'Edit my account' %}</a>
+{% endblock %}
