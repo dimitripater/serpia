@@ -1,4 +1,5 @@
 {% load bootstrap3 %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +17,14 @@
     <div class="container">
       <div class="starter-template">
       <a href="{% url 'home' %}"><h1>SERPIA</h1></a>
-      <p class="lead">Django and Python web development since 2007<br>The Netherlands +31(0)6 488 69870</p>
+      {% if not user.is_authenticated %}
+          <p class="lead">{% trans "Connecting with the right people" %}<br>
+          <a href="{% url 'registration_register' %}">{% trans "create account" %}</a>
+          {% trans "or " %}<a href="{% url 'auth_login' %}">{% trans "log in" %}</a></p>
+      {% else %}
+          <a href="{% url 'my_accounts_detail' %}">{% trans "my profile" %}</a>
+      {% endif %}
+
       <hr>
           {% block content %}{% endblock content %}
       </div>

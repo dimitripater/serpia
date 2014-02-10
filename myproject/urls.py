@@ -9,7 +9,8 @@ from account.views import AccountDetailView, AccountListView, AccountEdit, MyAcc
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', HomePageView.as_view(), name='home'),
+    # url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^$', AccountListView.as_view(), name='home'),
 
     url(r'^codeexamples/', CodeExampleListView.as_view(), name='codeexamples'),
     url(r'^codeexample/(?P<slug>[\w-]+)/*$', CodeExampleDetailView.as_view(), name='codeexample'),
