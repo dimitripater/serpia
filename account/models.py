@@ -4,6 +4,10 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
 
+def upload_to(instance, filename):
+    return 'account/%s/%s' % (slugify(instance.email), filename)
+
+
 class AccountUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -30,6 +34,7 @@ class AccountUserManager(BaseUserManager):
 class Account(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     about_me = models.TextField()
+    profile_image = models.ImageField(upload_to=upload_to, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     slug = models.SlugField()

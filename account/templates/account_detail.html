@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block content %}
-    {{ object }}
+{% thumbnail object.profile_image "100x100" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"><br>
+{% endthumbnail %}
+{{ object.about_me }}
 {% endblock %}

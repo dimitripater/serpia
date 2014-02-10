@@ -9,7 +9,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['serpia.com', 'serpia.nl']
 
-
 # Application definition
 
 TEMPLATE_CONTEXT_PROCESSORS = (

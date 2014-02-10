@@ -49,7 +49,7 @@ class AccountAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('password',)}),
-        ('Personal info', {'fields': ('about_me', 'email')}),
+        ('Personal info', {'fields': ('about_me', 'email', 'profile_image')}),
         ('Permissions', {'fields': ('is_admin', 'is_active')}),
     )
     add_fieldsets = (
