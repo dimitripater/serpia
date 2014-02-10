@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
+{%  load staticfiles %}
 
 {% block content %}
     {% for account in object_list %}
-        <a href="{% url 'accounts_detail' account.slug %}">{{ account }}</a><br>
+        {% if account.profile_image %}
+        {% thumbnail account.profile_image "50x50" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"><br>
+        {% endthumbnail %}
+        {% else %}
+            <img src="{% static "account/nophoto.jpg" %}" width="50" height="50"><br>
+        {% endif %}
+
+        <a href="{% url 'accounts_detail' account.slug %}">{{ account.screen_name }}</a><br>
     {% endfor %}
 {% endblock %} }}

@@ -33,6 +33,7 @@ class AccountUserManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
+    screen_name = models.CharField(max_length=50, unique=True)
     about_me = models.TextField()
     profile_image = models.ImageField(upload_to=upload_to, blank=True)
     is_active = models.BooleanField(default=True)
