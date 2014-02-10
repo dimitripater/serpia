@@ -17,8 +17,8 @@
     <div class="container">
       <div class="starter-template">
       <a href="{% url 'home' %}"><h1>SERPIA</h1></a>
+      <p class="lead">{% trans "Connecting with the right people" %}<br>
       {% if not user.is_authenticated %}
-          <p class="lead">{% trans "Connecting with the right people" %}<br>
           <a href="{% url 'registration_register' %}">{% trans "create account" %}</a>
           {% trans "or " %}<a href="{% url 'auth_login' %}">{% trans "log in" %}</a></p>
       {% else %}
