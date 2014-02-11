@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'registration',
-    'crispy_forms'
+    'crispy_forms',
+    'bootstrap_pagination',
 )
 
 MIDDLEWARE_CLASSES = (

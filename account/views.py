@@ -14,6 +14,7 @@ class AccountListView(ListView):
     """
     template_name = "account_list.html"
     model = Account
+    paginate_by = 5
 
 
 class AccountDetailView(DetailView):
