@@ -7,14 +7,24 @@ from braces.views import LoginRequiredMixin
 
 from .models import Account
 
+import django_filters
+from django_filters.views import FilterView
+
+
+class AccountFilter(django_filters.FilterSet):
+    class Meta:
+        model = Account
+        fields = ['color']
+
 # PUBLIC VIEWS
-class AccountListView(ListView):
+class AccountListView(FilterView):
     """
     Public account list view
     """
     template_name = "account_list.html"
     model = Account
     paginate_by = 5
+    filterset_class = AccountFilter
 
 
 class AccountDetailView(DetailView):
@@ -25,6 +35,7 @@ class AccountDetailView(DetailView):
     model = Account
 
 
+
 # MEMBER VIEWS
 class AccountEdit(LoginRequiredMixin, UpdateView):
     """
@@ -32,7 +43,7 @@ class AccountEdit(LoginRequiredMixin, UpdateView):
     """
     template_name = 'account_edit.html'
     model = Account
-    fields = ['about_me', 'profile_image']
+    fields = ['about_me', 'profile_image', 'color']
     template_name_suffix = '_update_form'
 
     def get_object(self):

@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import Account
+from .models import Account, Color
 
 
 class UserCreationForm(forms.ModelForm):
@@ -49,7 +49,7 @@ class AccountAdmin(UserAdmin):
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('password',)}),
-        ('Personal info', {'fields': ('about_me', 'email', 'profile_image', 'screen_name')}),
+        ('Personal info', {'fields': ('about_me', 'email', 'profile_image', 'screen_name', 'color')}),
         ('Permissions', {'fields': ('is_admin', 'is_active')}),
     )
     add_fieldsets = (
@@ -63,4 +63,5 @@ class AccountAdmin(UserAdmin):
     filter_horizontal = ()
 
 admin.site.register(Account, AccountAdmin)
+admin.site.register(Color)
 # admin.site.unregister(Group)

@@ -31,6 +31,13 @@ class AccountUserManager(BaseUserManager):
         return user
 
 
+class Color(models.Model):
+    color = models.CharField(max_length=16)
+
+    def __unicode__(self):
+        return u"%s" % self.color
+
+
 class Account(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     screen_name = models.CharField(max_length=50, unique=True)
@@ -40,6 +47,7 @@ class Account(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     slug = models.SlugField()
     has_profile = models.BooleanField(default=False)
+    color = models.ForeignKey(Color)
 
     objects = AccountUserManager()
 
