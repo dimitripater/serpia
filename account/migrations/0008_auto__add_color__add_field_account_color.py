@@ -17,7 +17,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'Account.color'
         db.add_column(u'account_account', 'color',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['account.Color']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['account.Color']),
                       keep_default=False)
 
 
