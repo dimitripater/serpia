@@ -15,8 +15,9 @@ class Migration(SchemaMigration):
         ))
 
         color = orm['account.Color']
-        color.color = "Red"
-        color.save()
+        c = color()
+        c.color = "Red"
+        c.save()
         db.send_create_signal(u'account', ['Color'])
 
         # Adding field 'Account.color'
