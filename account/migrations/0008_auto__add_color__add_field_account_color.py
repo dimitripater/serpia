@@ -13,9 +13,9 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('color', self.gf('django.db.models.fields.CharField')(max_length=16)),
         ))
-        color = orm['account.color']
-        color.color = "Red"
-        color.save()
+        Color = orm['account.color']
+        Color.color = "Red"
+        Color.save()
         db.send_create_signal(u'account', ['Color'])
 
         # Adding field 'Account.color'
