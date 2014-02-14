@@ -23,7 +23,7 @@ class AccountListView(FilterView):
     """
     template_name = "account_list.html"
     model = Account
-    paginate_by = 5
+    # paginate_by = 3
     filterset_class = AccountFilter
 
 
