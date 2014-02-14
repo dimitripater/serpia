@@ -5,32 +5,38 @@
 {%  load humanize %}
 {% load bootstrap_pagination %}
 {% load crispy_forms_tags %}
-
-
 {% block content %}
+<div id="results" class="well">
+    <ol class="commentlist">
+        {% for account in filter %}
+            <li>
+                <div class="comments_div">
+                    <div class="comment_author">
+                    {% if account.profile_image %}
+                    {% thumbnail account.profile_image "50x50" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"><br>
+                    {% endthumbnail %}
+                    {% else %}
+                        <img src="{% static "account/nophoto.jpg" %}" width="50" height="50"><br>
+                    {% endif %}
+                    <cite><a href='' class='url'>{{ account.alias }}</a></cite>
+                    </div>
+                    Vandaag<br>
+                    <p>Metselaar uit Amsterdam</p>
+                    <div class="yarr">
+                        <a href="{% url 'accounts_detail' account.slug %}"><span title="Bekijk profiel">Bekijk</span></a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+</div>
+{% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+{% endblock %}
+
+{% block filter %}
 <form action="" method="get">
     {{ filter.form|crispy }}
     <input type="submit" />
 </form>
-    {% for account in filter %}
-    <div class="row">
-        <div class="col-md-1">
-            {% if account.profile_image %}
-            {% thumbnail account.profile_image "50x50" crop="center" as im %}
-                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"><br>
-            {% endthumbnail %}
-            {% else %}
-                <img src="{% static "account/nophoto.jpg" %}" width="50" height="50"><br>
-            {% endif %}
-        </div>
-        <div class="col-md-10">
-            <p>My name is <a href="{% url 'accounts_detail' account.slug %}">{{ account.screen_name }}</a><br>
-            {{ account.about_me|truncatewords:50 }}<br>
-            {{ account.last_login|naturalday:"d F Y" }}</p>
-        </div>
-    </div>
-    <hr>
-    {% endfor %}
-{% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
-
-{% endblock %} }}
+{% endblock filter %}

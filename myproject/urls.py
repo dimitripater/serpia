@@ -3,14 +3,18 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from frontend.views import HomePageView, CodeExampleListView, CodeExampleDetailView
+from frontend.views import CodeExampleListView, CodeExampleDetailView
 from account.views import AccountDetailView, AccountListView, AccountEdit, MyAccountDetailView
+from django.views.generic import TemplateView
+
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^$', AccountListView.as_view(), name='home'),
+
+    # (r'^test/', TemplateView.as_view(template_name="about.html")),
 
     url(r'^codeexamples/', CodeExampleListView.as_view(), name='codeexamples'),
     url(r'^codeexample/(?P<slug>[\w-]+)/*$', CodeExampleDetailView.as_view(), name='codeexample'),
