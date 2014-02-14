@@ -14,7 +14,7 @@ from django_filters.views import FilterView
 class AccountFilter(django_filters.FilterSet):
     class Meta:
         model = Account
-        fields = ['color']
+        fields = ['branche', 'education']
 
 # PUBLIC VIEWS
 class AccountListView(FilterView):

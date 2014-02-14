@@ -38,7 +38,23 @@ class Color(models.Model):
         return u"%s" % self.color
 
 
+class Branche(models.Model):
+    branche = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return u"%s" % self.branche
+
+
+class Education(models.Model):
+    education = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return u"%s" % self.education
+
+
 class Account(AbstractBaseUser):
+    created = models.DateTimeField(auto_now_add=True)
+    changed = models.DateTimeField(auto_now=True)
     email = models.EmailField(max_length=255, unique=True)
     screen_name = models.CharField(max_length=50, unique=True)
     about_me = models.TextField()
@@ -48,6 +64,8 @@ class Account(AbstractBaseUser):
     slug = models.SlugField()
     has_profile = models.BooleanField(default=False)
     color = models.ForeignKey(Color)
+    branche = models.ManyToManyField(Branche, blank=True, null=True)
+    education = models.ForeignKey(Education, blank=True, null=True)
 
     objects = AccountUserManager()
 
