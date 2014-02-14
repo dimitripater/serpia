@@ -13,11 +13,14 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('color', self.gf('django.db.models.fields.CharField')(max_length=16)),
         ))
+        color = orm['Color']
+        color.color = "Red"
+        color.save()
         db.send_create_signal(u'account', ['Color'])
 
         # Adding field 'Account.color'
         db.add_column(u'account_account', 'color',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['account.Color']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['account.Color']),
                       keep_default=False)
 
 
